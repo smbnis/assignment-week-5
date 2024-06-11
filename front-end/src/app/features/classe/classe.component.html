@@ -1,0 +1,21 @@
+<div class="card">
+    <div class="card-header">
+      <h2>Classes</h2>
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <input #className type="text" class="form-control" placeholder="Nom classe">
+        <button class="btn btn-success mt-2" (click)="addClass(className.value)">Ajouter Classe</button>
+      </div>
+      <ul class="list-group mt-3">
+        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let cls of classes">
+          {{ cls.name }}
+          <div>
+            <button class="btn btn-warning btn-sm mx-1" (click)="updateClass(cls)">Modifier</button>
+            <button class="btn btn-danger btn-sm mx-1" (click)="deleteClass(cls._id)">Supprimer</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  

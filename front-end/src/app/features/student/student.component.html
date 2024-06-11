@@ -1,0 +1,44 @@
+<div class="card">
+  <div class="card-header">
+    <h2>Etudiants</h2>
+  </div>
+  <div class="card-body">
+    <div class="form-group">
+      <input
+      #studentName type="text"
+        class="form-control"
+        placeholder="Nom complet de l'etudiant"
+      />
+      <select #studentClass class="form-control mt-2">
+        <option *ngFor="let cls of classes" [value]="cls._id">
+          {{ cls.name }}
+        </option>
+      </select>
+      <button class="btn btn-success mt-2" (click)="addStudent(studentName.value, studentClass.value)">
+        Ajouter Etudiant
+      </button>
+    </div>
+    <ul class="list-group mt-3">
+      <li
+        class="list-group-item d-flex justify-content-between align-items-center"
+        *ngFor="let student of students"
+      >
+        {{ student.name }} ({{ getClassName(student.classId) }})
+        <div>
+          <button
+            class="btn btn-warning btn-sm mx-1"
+            (click)="updateStudent(student)"
+          >
+            Modifier
+          </button>
+          <button
+            class="btn btn-danger btn-sm mx-1"
+            (click)="deleteStudent(student._id)"
+          >
+            Supprimer
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
